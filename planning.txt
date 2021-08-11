@@ -1,0 +1,80 @@
+
+- Brainstorming
+    user email
+    user password
+    user profile page
+
+    recipes
+    recipe owner
+    ingredients
+    instructions
+    public or private
+    
+    grocery list
+    recipe ingredients
+
+    occasions
+    recipe title
+
+- Table Ideas
+
+    -User Table
+        - user_id
+        - user_email
+        - user_password
+        - username
+
+    - Recipes Table
+        - recipe_id
+        - recipe_name
+        - user_id
+        - ingredients
+        - instructions
+        - public (true or false)
+
+    - Grocery list
+        - grocery_list_id
+        - ingredients
+    
+    - Occasions
+        - occasion_id
+        - occasion_name
+        - user_id
+        - recipe_id
+
+
+- Relationships
+    - One to One
+        Recipes => instructions (each recipe has one set of instructions)
+    - One to many
+        Users => recipes (one user can have many recipes)
+        Users => occasions (one user can have many occasions)
+        Recipes => ingredients (one recipe will have many ingredients)
+    - Many to many
+        Recipes => occasions (many recipes can be part of many occasions)
+
+- Columns
+    -User Table
+        - user_id (Create a unique identifier for each user)
+        - user_email (Give user a means of signing in and saving their data)
+        - user_password (" ")
+        - username (A somewhat unique name for others to look you up by)
+
+    - Recipes Table
+        - recipe_id (Unique id for each recipe)
+        - recipe_name (A readable name for us mere humans to remember)
+        - user_id (callback to user_id to bind a users recipes to their account)
+        - ingredients (Where the user will store their ingredients, use TEXT so they can have as many ingredients as they want)
+        - instructions (Where the user will store their instructions, use TEXT so they can have as many instructions as they want)
+        - public (true or false) (Whether or not the user wants to share their recipe with others, uses a boolean)
+
+    - Grocery list
+        - grocery_list_id (unique id for each grocery list)
+        - user_id (callback to assign this grocery list to a user)
+        - ingredients (pull ingredients from a recipes table, need sub query)
+    
+    - Occasions
+        - occasion_id (unique id for each occasion)
+        - occasion_name (readable name for said occasion)
+        - user_id (callback to assign occasion to a user)
+        - recipe_id (tie recipe and occasion together)
